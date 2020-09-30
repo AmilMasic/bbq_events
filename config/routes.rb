@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/singup' => 'users#new'
+  post '/signup' => 'users#create'
+
   resources :user_events
   resources :events
   resources :users
