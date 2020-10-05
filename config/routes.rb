@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'sessions#home'
+
   get '/singup' => 'users#new'
   post '/signup' => 'users#create'
 
