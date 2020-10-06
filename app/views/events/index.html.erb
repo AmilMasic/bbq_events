@@ -1,0 +1,7 @@
+<h1>Here are all the current events:</h1>
+
+<% @events.each do |event| %>
+
+  <h1><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h1>
+
+<% end %>

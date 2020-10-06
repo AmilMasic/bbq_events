@@ -1,2 +1,4 @@
-<h1>showing <%=@event.eventname %></h1>
-<h1>location <%=@event.location %></h1>
+<h1>showing: <%= @event.eventname %></h1>
+<h1>location: <%= @event.location %></h1>
+
+<p>Go back to <%= link_to "list of events", events_path %></p>
