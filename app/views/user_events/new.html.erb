@@ -1,1 +1,39 @@
 <h1>New Event</h1>
+
+
+<p> Created by <%= current_user.username %>. </p>
+
+<%= form_for (@user_event) do |f| %>
+
+
+<%= f.fields_for :event do |event| %>
+<%= event.label :eventname %>
+<br>
+<%= event.text_field :eventname %>
+<br>
+<br>
+<%= event.label :location %>
+<br>
+<%= event.text_field :location %>
+<br>
+<br>
+
+<% end %>
+
+  <%= f.label :foodname %>
+  <br>
+  <%= f.text_field :foodname %>
+  <br><br>
+  <%= f.label :foodtype %>
+  <br>
+  <%= f.text_field :foodtype %>
+  <br><br>
+  <%= f.label :fuel %>
+  <br>
+  <%= f.text_field :fuel %>
+  <br><br>
+
+  <br>
+  <br>
+  <%= f.submit "Submit" %>
+<% end %>

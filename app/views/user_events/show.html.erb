@@ -1,0 +1,9 @@
+<h1>Showing: <%= @user_event.event.eventname %></h1>
+<h1>Location: <%= @user_event.event.location %></h1>
+
+<p> Foodname:<%= @user_event.foodname %></p>
+<p>Foodtype:<%= @user_event.foodtype %></p>
+<p>Fuel:<%= @user_event.fuel %> </p>
+<p>Created by <%=@user_event.user.username %> </p>
+
+<p>Go back to <%= link_to "list of events", events_path %></p>
