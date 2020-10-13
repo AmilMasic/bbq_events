@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @event.user_events.build
   end
 
 
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:eventname, :location)
+    params.require(:event).permit(:id, :eventname, :location, user_events_attributes: [:id, :foodname, :foodtype, :fuel])
   end
 
 end

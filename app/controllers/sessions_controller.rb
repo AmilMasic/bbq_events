@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
 
   def home
-
+    authorize
   end
 
   def new
