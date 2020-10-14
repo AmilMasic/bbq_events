@@ -6,5 +6,7 @@
   <p> Foodtype: <%= userevent.foodtype %>. </p>
   <p> Fuel: <%= userevent.fuel %>. </p>
   <p>Created by <%= userevent.user.username %>. </p>
+
+  <%= link_to "Delete", userevent, method: :delete, data: { confirm: "Really?" } %>
 <% end %>
 <p>Go back to <%= link_to "list of events", events_path %></p>

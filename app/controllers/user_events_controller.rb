@@ -9,7 +9,7 @@ class UserEventsController < ApplicationController
 
 
     def create
-    
+
       @user_event = UserEvent.new(user_event_params)
       @user_event.user = current_user
       if @user_event.save
@@ -25,6 +25,10 @@ class UserEventsController < ApplicationController
 
     end
 
+    def destroy
+    UserEvent.find(params[:id]).destroy
+    redirect_to events_url
+  end
 
     private
 
