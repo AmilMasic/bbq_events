@@ -3,15 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'sessions#home'
 
-  # get '/signup' => 'users#new'
-  # post '/signup' => 'users#create'
-  #
-  # get '/login' => 'sessions#new'
-  # post '/login' => 'sessions#create'
-
-  # delete '/logout' => 'sessions#destroy'
-
-
   resources :user_events
   resources :events
   resources :users

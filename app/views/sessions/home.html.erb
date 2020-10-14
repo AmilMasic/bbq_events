@@ -7,7 +7,7 @@
 <%= link_to "Sign up", new_user_registration_path %>
 <% end %>
 
-
+  <p>Hello <%= current_user.username %>! </p>
 
 <h2><%= link_to "Create a new event", new_user_event_path %> </h2>
 <h2><%= link_to "View all events", events_path %> </h2>
