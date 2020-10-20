@@ -6,4 +6,7 @@
 <p>Fuel:<%= @user_event.fuel %> </p>
 <p>Created by <%=@user_event.user.username %> </p>
 
+<%= link_to "Delete", @userevent, method: :delete, data: { confirm: "Really?" } %>
+
+
 <p>Go back to <%= link_to "list of events", events_path %></p>

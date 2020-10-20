@@ -1,6 +1,6 @@
 class UserEvent < ApplicationRecord
   belongs_to :user
-  belongs_to :event
+  belongs_to :event, dependent: :destroy
 
   accepts_nested_attributes_for :event
   accepts_nested_attributes_for :user
