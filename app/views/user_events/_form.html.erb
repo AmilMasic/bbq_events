@@ -1,5 +1,22 @@
 
 
+<% if @user_event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+    <ul>
+    <% @user_event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<p> Created by <%= current_user.username %>. </p>
+
+
 <%= form_for (@user_event) do |f| %>
 <%= f.fields_for :event do |event| %>
 <%= event.label :eventname %>

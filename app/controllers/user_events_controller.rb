@@ -22,7 +22,19 @@ class UserEventsController < ApplicationController
 
     def show
       @user_event = UserEvent.find(params[:id])
+    end
 
+    def edit
+      @user_event = UserEvent.find(params[:id])
+    end
+
+    def update
+      @user_event = UserEvent.find_by(id: params[:id])
+      if @user_event.update(user_event_params)
+        redirect_to @user_event
+      else
+        render :edit
+      end
     end
 
     def destroy
