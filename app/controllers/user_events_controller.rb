@@ -30,10 +30,14 @@ class UserEventsController < ApplicationController
 
     def update
       @user_event = UserEvent.find_by(id: params[:id])
-      if @user_event.update(user_event_params)
-        redirect_to @user_event
+      if current_user = @user_event.user
+        if @user_event.update(user_event_params)
+          redirect_to @user_event
+        else
+          render :edit
+        end
       else
-        render :edit
+        flash[:notice] = 'You are not authorized to make this change'
       end
     end
 
