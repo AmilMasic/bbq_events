@@ -1,0 +1,11 @@
+<h2><%= link_to "Create a new event", new_user_event_path %> </h2>
+
+<hr>
+
+<h1>Here are all the current events:</h1>
+
+<% @events.each do |user_event| %>
+
+  <h1><%= link_to user_event.eventname, user_event_path(user_event) %> @ <%= user_event.location %>,</h1>
+
+<% end %>
