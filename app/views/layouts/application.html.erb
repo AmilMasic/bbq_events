@@ -15,6 +15,17 @@
     <p class="alert"><%= alert %></p>
 
 
+    <% if current_user %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <%= link_to "Edit your profile", edit_user_registration_path %>
+      <%= link_to "Main Page", root_path %>
+      
+    <% else %>
+    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Sign up", new_user_registration_path %>
+    <%= link_to "Main Page", root_path %>
+    <% end %>
+
 
 
     <%= yield %>
