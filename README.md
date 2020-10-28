@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project Title
 
-Things you may want to cover:
+A simple webapp that allows users to create bbq events.
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+CD into the project folder and in your terminal run
+```
+rails s
+```
+to start your server
 
-* Configuration
+### Prerequisites
 
-* Database creation
+A text editor, terminal and a browser
+Be sure to run
+```
+bundle install
+```
 
-* Database initialization
+## Deployment
 
-* How to run the test suite
+It should be ready to deploy out of the box.  Follow the instructions from the service you wish to deploy on.
 
-* Services (job queues, cache servers, search engines, etc.)
+You'll need to replace the Oauth and AWS credentials with your own. Please see the documentation for each on how to do this. Then add your credentials to the credentials.yml.enc file.
 
-* Deployment instructions
+## Built With
 
-* ...
+* [Rails]
+
+## Authors
+
+Amil Masic
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
