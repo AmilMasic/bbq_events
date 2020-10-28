@@ -13,8 +13,9 @@
 <% end %>
 
 
-
-<p> Created by <%= current_user.username %>. </p>
+<% if user_signed_in? %>
+  <p> Created by <%= current_user.username %>. </p>
+<% end %>
 
 
 <%= form_for (@user_event) do |f| %>

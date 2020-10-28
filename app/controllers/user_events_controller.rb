@@ -1,22 +1,24 @@
 class UserEventsController < ApplicationController
-
+  # before action not working, issue due to devise, need more research into this.
+  # before_action :user_signed_in?, only: [:new]
     def index
       @events = Event.all
     end
 
     def new
-      @user_event = UserEvent.new
-      @user_event.build_event
-
+      if user_signed_in?
+        @user_event = UserEvent.new
+        @user_event.build_event
+      else
+        redirect_to root_path, notice: 'Thou Shalt Nought duuu dat :( Please sing in. '
+      end
     end
 
 
     def create
-
       @user_event = UserEvent.new(user_event_params)
       @user_event.user = current_user
       if @user_event.save
-
         redirect_to @user_event
       else
         render :new
@@ -29,27 +31,21 @@ class UserEventsController < ApplicationController
 
     def edit
       @user_event = UserEvent.find(params[:id])
-      redirect_to root_path, notice: 'Thou Shalt Nought duuu dat :( ' unless current_user.id == @user_event.user_id
-
-
+      redirect_to root_path, notice: 'You are not authorized to edit this event!' unless  @user_event.user == current_user
     end
 
     def update
-      # binding.pry
       @user_event = UserEvent.find_by(id: params[:id])
-
         if @user_event.update(user_event_params)
           redirect_to @user_event
         else
           render :edit
         end
-
     end
 
     def destroy
       @user_event = UserEvent.find(params[:id])
-    # binding.pry
-      if @user_event.user == current_user
+      if user_signed_in?
         @user_event.destroy
         redirect_to events_path, notice: 'Deleted'
       else
