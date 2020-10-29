@@ -45,7 +45,7 @@ class UserEventsController < ApplicationController
 
     def destroy
       @user_event = UserEvent.find(params[:id])
-      if user_signed_in?
+      if @user_event.user == current_user
         @user_event.destroy
         redirect_to events_path, notice: 'Deleted'
       else
