@@ -1,9 +1,16 @@
 class UserEventsController < ApplicationController
   # before action not working, issue due to devise, need more research into this.
   # before_action :user_signed_in?, only: [:new]
-    def index
-      @events = Event.all
-    end
+
+
+
+    # code no longer needed
+    # left here for demonstation purposes
+    # change done after submiting porftolio project and before demo
+
+    # def index
+    #   @events = Event.all
+    # end
 
     def new
       if user_signed_in?
@@ -25,9 +32,13 @@ class UserEventsController < ApplicationController
       end
     end
 
-    def show
-      @user_event = UserEvent.find(params[:id])
-    end
+    # code no longer needed
+    # left here for demonstation purposes
+    # change done after submiting porftolio project and before demo
+
+    # def show
+    #   @user_event = UserEvent.find(params[:id])
+    # end
 
     def edit
       @user_event = UserEvent.find(params[:id])

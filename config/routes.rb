@@ -5,7 +5,10 @@ Rails.application.routes.draw do
    }
   root 'sessions#home'
 
-  resources :user_events
+  get '/user_events', to: redirect('/events')
+  get '/user_events/:id', to: redirect('/events/%{id}')
+
+  resources :user_events, except: [:index, :show]
   resources :events
   resources :users do
     resources :events
