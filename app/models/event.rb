@@ -7,7 +7,5 @@ class Event < ApplicationRecord
   validates :eventname, :location, presence: true, allow_blank: false
 
 
-  def self.creator
-    User.where(id: current_user.id)
-  end
+
 end
