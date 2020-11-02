@@ -5,7 +5,9 @@ module EventsHelper
     end
   end
 
-  def authenticate_creator(event)
-    event.user_events.first 
+  # Not a fan of finding this, there has to be a better way
+  def find_event_creator(event)
+    event.user_events.first.user = current_user
   end
+
 end

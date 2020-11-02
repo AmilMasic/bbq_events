@@ -5,14 +5,11 @@ Rails.application.routes.draw do
    }
   root 'sessions#home'
 
-  # get '/user_events', to: redirect('/events')
-  # get '/user_events/:id', to: redirect('/events/%{id}')
 
   resources :user_events
   resources :events
   resources :users do
     resources :events
-    resources :user_events
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

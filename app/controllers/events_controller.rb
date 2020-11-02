@@ -35,8 +35,8 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    if @event.user_events.user == current_user
-      redirect_to edit_event_path
+    if helpers.find_event_creator(@event)
+      render :edit
     else
       redirect_to @event, notice: 'You are not authorized to edit this event'
     end
@@ -53,7 +53,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    if @event.user == current_user
+    if helpers.find_event_creator(@event)
       @event.destroy
       redirect_to events_path, notice: 'Deleted'
     else
