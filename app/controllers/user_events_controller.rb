@@ -8,9 +8,9 @@ class UserEventsController < ApplicationController
     # left here for demonstation purposes
     # change done after submiting porftolio project and before demo
 
-    # def index
-    #   @events = Event.all
-    # end
+    def index
+      @events = Event.all
+    end
 
     def new
       if user_signed_in?
@@ -36,9 +36,9 @@ class UserEventsController < ApplicationController
     # left here for demonstation purposes
     # change done after submiting porftolio project and before demo
 
-    # def show
-    #   @user_event = UserEvent.find(params[:id])
-    # end
+    def show
+      @user_event = UserEvent.find(params[:id])
+    end
 
     def edit
       @user_event = UserEvent.find(params[:id])
