@@ -8,6 +8,6 @@
   <p>Created by <%= userevent.user.username %>. </p>
 
   <%= link_to "Delete", userevent, method: :delete, data: { confirm: "Really?" } %>
-  <%= link_to "Edit", edit_user_event_path %>
+  <%= link_to "Edit", edit_event_path %>
 <% end %>
 <p>Go back to <%= link_to "list of events", events_path %></p>

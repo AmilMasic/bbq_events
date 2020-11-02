@@ -5,5 +5,5 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :user_events
 
   validates :eventname, :location, presence: true, allow_blank: false
-  
+
 end
