@@ -16,11 +16,7 @@ class EventsController < ApplicationController
 
 
   def create
-    # binding.pry
     @event = Event.new(event_params)
-    # @event.user_events.each do |user_event|
-    #   user_event.user_id = current_user.id
-    # end
     helpers.set_user_event_user(@event)
     if @event.save
       redirect_to @event
