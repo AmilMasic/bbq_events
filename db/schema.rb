@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_201614) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "finished"
+    t.boolean "finished", default: false
   end
 
   create_table "sessions", force: :cascade do |t|
