@@ -1,16 +1,22 @@
 <h2><%= link_to "Create a new event", new_event_path %> </h2>
 
 <hr>
+<% if user_signed_in? %>
+  <h3> Hello, <%= current_user.username %>. </h3>
+<% end %>
 
-<h1>Here are all the current events:</h1>
+<p>You have created <%= current_user.events.count %> event. </p>
+<p>Here is a list of all the events that you have created:</p>
+<% current_user.events.each do |event| %>
+<h4> <%= link_to event.eventname, event_path(event) %> @ <%= event.location %> </h4>
+<% end %>
+
+<hr>
+<h3>Here are all the current events:</h3>
 
 <% @events.each do |event| %>
 
-  <h1><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h1>
+  <h4><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h4>
 
 <% end %>
   <hr>
-  <h1>Here is a list of all the events created by you.</h1>
-<% current_user.events.each do |event| %>
-  <h1> <%= link_to event.eventname, event_path(event) %> @ <%= event.location %> </h1>
-<% end %>
