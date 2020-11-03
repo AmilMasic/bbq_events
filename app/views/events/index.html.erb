@@ -6,12 +6,14 @@
 <% end %>
 
 <p>You have created <%= current_user.events.count %> event. </p>
+
 <p>Here is a list of all the events that you have created:</p>
 <% current_user.events.each do |event| %>
 <h4> <%= link_to event.eventname, event_path(event) %> @ <%= event.location %> </h4>
 <% end %>
 
 <hr>
+
 <h3>Here are events that are active:</h3>
 
 <% @events.each do |event| %>
@@ -19,4 +21,7 @@
   <h4><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h4>
 
 <% end %>
+
+
   <hr>
+<h3>You can find all finished events <%= link_to "here", '/events/finished' %>.</h3>

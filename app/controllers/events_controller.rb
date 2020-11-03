@@ -4,6 +4,10 @@ class EventsController < ApplicationController
     @events = Event.all.stil_active
   end
 
+  def finished
+    @events = Event.all.not_active
+  end
+
   def new
     if user_signed_in?
       @event = Event.new

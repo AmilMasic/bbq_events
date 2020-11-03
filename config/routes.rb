@@ -5,7 +5,7 @@ Rails.application.routes.draw do
    }
   root 'sessions#home'
 
-
+  get '/events/finished', to: 'events#finished'
   resources :user_events
   resources :events
   resources :users do

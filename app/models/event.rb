@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   validates :eventname, :location, presence: true, allow_blank: false
 
   scope :stil_active, -> {where(finished: false)}
+  scope :not_active, -> {where(finished: true)}
 
   def finished?
     if self.finished == true
