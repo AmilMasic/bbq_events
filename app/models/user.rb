@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
+
+
   has_many :user_events
   has_many :events, through: :user_events
 
@@ -14,5 +16,6 @@ class User < ApplicationRecord
       user.username = provider_data.info.name
     end
   end
+
   
 end

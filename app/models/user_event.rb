@@ -7,5 +7,5 @@ class UserEvent < ApplicationRecord
 
   validates :foodname, :foodtype, :fuel, presence: true
 
-  
+
 end

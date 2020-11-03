@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  
+
   has_many :user_events
   has_many :users, through: :user_events
 
@@ -7,6 +7,6 @@ class Event < ApplicationRecord
 
   validates :eventname, :location, presence: true, allow_blank: false
 
-
+  
 
 end

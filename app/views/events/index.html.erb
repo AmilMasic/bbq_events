@@ -9,3 +9,8 @@
   <h1><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h1>
 
 <% end %>
+  <hr>
+  <h1>Here is a list of all the events created by you.</h1>
+<% current_user.events.each do |event| %>
+  <h1> <%= link_to event.eventname, event_path(event) %> @ <%= event.location %> </h1>
+<% end %>
