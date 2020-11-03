@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all.stil_active
+    @events = Event.all
   end
 
   def finished

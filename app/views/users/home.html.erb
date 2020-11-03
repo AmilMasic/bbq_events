@@ -1,0 +1,28 @@
+
+<% if current_user %>
+   <p>Hello,  <%=current_user.username  %> </p>
+   <h2><%= link_to "Create a new event", new_event_path %> </h2>
+   <h2><%= link_to "View all events", events_path %> </h2>
+
+   <p>You have created <%= current_user.events.count %> event. </p>
+
+   <p>Here is a list of all the events that you have created:</p>
+   <% current_user.events.each do |event| %>
+   <h4> <%= link_to event.eventname, event_path(event) %> @ <%= event.location %> </h4>
+   <% end %>
+
+   <hr>
+
+   <h3>Here are events that are active:</h3>
+
+   <% @events.each do |event| %>
+
+     <h4><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h4>
+
+   <% end %>
+
+
+     <hr>
+   <h3>You can find all finished events <%= link_to "here", '/events/finished' %>.</h3>
+
+<% end %>
