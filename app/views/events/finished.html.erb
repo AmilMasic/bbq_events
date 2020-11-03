@@ -1,0 +1,7 @@
+<h2>Here are all the events that have been finished:</h2>
+
+<% @events.each do |event| %>
+
+  <h4><%= link_to event.eventname, event_path(event) %> @ <%= event.location %>,</h4>
+
+<% end %>
