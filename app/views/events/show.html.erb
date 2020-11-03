@@ -1,5 +1,6 @@
 <h1>Showing: <%= @event.eventname %></h1>
 <h1>Location: <%= @event.location %></h1>
+<h1><%= @event.finished? %> </h1>
 
 <% @event.user_events.each do |userevent| %>
   <p> Foodname: <%= userevent.foodname %>. </p>
