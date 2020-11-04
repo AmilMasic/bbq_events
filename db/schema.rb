@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_201614) do
+ActiveRecord::Schema.define(version: 2020_11_04_213917) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "eventname"
@@ -54,4 +64,6 @@ ActiveRecord::Schema.define(version: 2020_11_03_201614) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
 end

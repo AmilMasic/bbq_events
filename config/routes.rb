@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :events
   resources :comments
 
+  resources :events do
+    resources :comments
+  end
+
   resources :users do
     resources :events
   end

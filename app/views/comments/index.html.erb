@@ -1,0 +1,11 @@
+<% if @event %>
+  <h1>Comments for <%= @event.eventname%></h1>
+<% else %>
+  <h1>All Comments</h1>
+<% end %>
+
+<ul>
+<% @comments.each do |comment|%>
+  <li><%= comment.user.username%> says "<%= comment.content%>" about this post: <%= link_to comment.event.eventname, event_path(comment.event_id) %></li>
+<% end %>
+</ul>
