@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
 
   has_many :user_events
+  has_many :comments
+  has_many :events, through: :comments
   has_many :events, through: :user_events
 
   def self.create_from_provider_data(provider_data)
@@ -17,5 +19,5 @@ class User < ApplicationRecord
     end
   end
 
-  
+
 end
