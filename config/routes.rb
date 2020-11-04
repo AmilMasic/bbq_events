@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root 'users#home'
 
   get '/events/finished', to: 'events#finished'
-  
+
   resources :user_events
   resources :events
+  resources :comments
+
   resources :users do
     resources :events
   end
