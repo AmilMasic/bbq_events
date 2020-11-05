@@ -31,11 +31,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    # @comment = Comment.find_by_id(params[:id])
   end
 
   def update
-    # @comment = Comment.find_by_id(params[:id])
     if @comment.update(comment_params)
      redirect_to comment_path(@comment)
    else
@@ -44,7 +42,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    # @comment = Comment.find_by_id(params[:id])
   end
 
   def destroy
