@@ -2,6 +2,8 @@
 <h1>Location: <%= @event.location %></h1>
 <h1><%= @event.finished? %> </h1>
 
+<hr>
+
 <% @event.user_events.each do |userevent| %>
   <p> Foodname: <%= userevent.foodname %>. </p>
   <p> Foodtype: <%= userevent.foodtype %>. </p>
@@ -11,4 +13,20 @@
   <%= link_to "Delete", @event, method: :delete, data: { confirm: "Really?" } %>
   <%= link_to "Edit", edit_event_path %>
 <% end %>
-<p>Go back to <%= link_to "list of events", events_path %></p>
+
+<hr>
+
+<h1><%= link_to 'Add a new comment', new_event_comment_path(@event)%></h1>
+
+<% if !@event.comments.empty? %>
+  <h3><%= link_to 'See all comments', event_comments_path(@event)%></h3>
+  <h4>Most Recent Comments:</h4>
+  <% @event.comments.order(updated_at: :desc).limit(3).each do |comment|%>
+    <li>
+    <%= comment.user.username%> says "<%= link_to comment.content, event_comment_path(@event,comment)%>"
+    </li>
+  <% end %>
+<% end %>
+<br><br>
+
+<p>Go back to <%= link_to "list of all events", events_path %></p>
