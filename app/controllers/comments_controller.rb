@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
      @error = "That event doesn't exist" if params[:event_id]
      @comments = Comment.all
    end
- end
+  end
 
- def new
+  def new
     if params[:event_id] && @event = Event.find_by_id(params[:event_id])
       @comment = @event.comments.build
     else
@@ -27,6 +27,24 @@ class CommentsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @comment = Comment.find_by_id(params[:id])
+  end
+
+  def update
+    @comment = Comment.find_by_id(params[:id])
+    if @comment.update(comment_params)
+     redirect_to comment_path(@comment)
+   else
+     render :edit
+   end
+  end
+
+  def show
+    @comment = Comment.find_by_id(params[:id])
+  end
+
 
   private
 

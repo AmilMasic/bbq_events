@@ -1,0 +1,30 @@
+<h1>Edit comment</h1>
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this from being saved:</h2>
+
+    <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@comment.event,@comment]) do |f|%>
+
+ <% if !@comment.event %>
+  <%= f.label :event %>
+  <%= f.collection_select :event_id, Event.all, :id, :eventname %>
+<% else %>
+    <%= f.hidden_field :event_id %>
+<% end %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+
+  <%= f.submit %>
+
+<% end %>
