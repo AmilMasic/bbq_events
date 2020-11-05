@@ -51,7 +51,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.find_by(id: params[:id])
     if helpers.find_event_creator(@event)
       @event.destroy
       redirect_to events_path, notice: 'Deleted'
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
   end
 
   def find_event
-   @event = Event.find(params[:id])
+   @event = Event.find_by(id: params[:id])
    if !@event
      flash[:message] = "Event was not found."
      redirect_to events_path

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  before_action :find_comment, only: [:show, :edit, :update, :delete]
 
   def index
    if params[:event_id] && @event = Event.find_by_id(params[:event_id])
@@ -30,11 +31,11 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find_by_id(params[:id])
+    # @comment = Comment.find_by_id(params[:id])
   end
 
   def update
-    @comment = Comment.find_by_id(params[:id])
+    # @comment = Comment.find_by_id(params[:id])
     if @comment.update(comment_params)
      redirect_to comment_path(@comment)
    else
@@ -43,11 +44,11 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find_by_id(params[:id])
+    # @comment = Comment.find_by_id(params[:id])
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find_by(id: params[:id])
     @event = @comment.event
     if @comment.user == current_user
       @comment.destroy
@@ -62,6 +63,14 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content,:event_id)
+  end
+
+  def find_comment
+   @comment = Comment.find_by(id: params[:id])
+   if !@comment
+     flash[:message] = "Comment was not found."
+     redirect_to comments_path
+   end
   end
 
 end
