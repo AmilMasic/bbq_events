@@ -2,6 +2,7 @@
 
 <% if @comment.user == current_user %>
   <%= link_to "Edit Comment", edit_comment_path(@comment)%>
+  <%= link_to "Delete Comment", @comment, method: :delete, data: { confirm: "Really?" } %>
 <% end %>
 
 <h4>Check out the event here: <%= link_to @comment.event.eventname, event_path(@comment.event_id) %></h4>

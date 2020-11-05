@@ -21,8 +21,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
+    @event = @comment.event
     if @comment.save
-      redirect_to comments_path
+      redirect_to event_path(@event)
     else
       render :new
     end
@@ -43,6 +44,17 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find_by_id(params[:id])
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @event = @comment.event
+    if @comment.user == current_user
+      @comment.destroy
+      redirect_to event_path(@event), notice: 'Deleted'
+    else
+      redirect_to comment_path, notice: 'You are not authorized to delete this comment.'
+    end
   end
 
 
