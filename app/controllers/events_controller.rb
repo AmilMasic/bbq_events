@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
 
+  #note find_event does not work in :delete
+  before_action :find_event, only: [:show, :edit, :update]
+
   def index
     @events = Event.all
   end
@@ -12,7 +15,6 @@ class EventsController < ApplicationController
     if user_signed_in?
       @event = Event.new
       @user_event = @event.user_events.build(user_id: current_user.id)
-      # @user_event.build_user
     else
       redirect_to root_path, notice: 'Thou Shalt Nought duuu dat :( Please sing in. '
     end
@@ -30,11 +32,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def edit
-    @event = Event.find(params[:id])
     if helpers.find_event_creator(@event)
       render :edit
     else
@@ -43,7 +43,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find_by(id: params[:id])
       if @event.update(event_params)
         redirect_to @event
       else
@@ -63,8 +62,17 @@ class EventsController < ApplicationController
 
 
   private
+
   def event_params
     params.require(:event).permit(:id, :eventname, :location, :finished, user_events_attributes: [:id, :foodname, :foodtype, :fuel, :user_id])
+  end
+
+  def find_event
+   @event = Event.find(params[:id])
+   if !@event
+     flash[:message] = "Event was not found."
+     redirect_to events_path
+   end
   end
 
 end
