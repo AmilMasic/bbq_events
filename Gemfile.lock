@@ -122,15 +122,13 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.0)
-    mini_portile2 (2.5.3)
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     nio4r (2.5.7)
-    nokogiri (1.11.7)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.11.7-x86_64-darwin)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
@@ -150,6 +148,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -257,7 +258,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-18
 
 DEPENDENCIES
   activerecord-session_store
@@ -270,6 +271,7 @@ DEPENDENCIES
   listen (~> 3.2)
   omniauth
   omniauth-google-oauth2
+  omniauth-rails_csrf_protection (~> 1.0)
   pry
   puma (~> 4.3)
   rails (~> 6.0.3)
@@ -288,4 +290,4 @@ RUBY VERSION
    ruby 2.6.1p33
 
 BUNDLED WITH
-   2.1.4
+   2.2.20
