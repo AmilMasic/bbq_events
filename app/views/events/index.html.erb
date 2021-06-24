@@ -5,6 +5,8 @@
   <h3> Hello, <%= current_user.username %>. </h3>
 <% end %>
 
+<%= javascript_pack_tag 'my_js' %>
+
 <% @events.each do |event| %>
    <h4> <%= link_to event.eventname, event_path(event) %> @ <%= event.location %>  </h4>
 <% end %>
